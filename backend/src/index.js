@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
 const anjemRoutes = require("./routes/anjemRoutes");
@@ -15,8 +16,8 @@ app.get("/", (req, res) => {
   res.send("API Anjem & Jastip Running 🚀");
 });
 
-app.use("/api/anjem", anjemRoutes);
-app.use("/api/jastip", jastipRoutes);
+app.use("/api/anjem", require("./routes/anjemRoutes"));
+app.use("/api/jastip", require("./routes/jastipRoutes"));
 
 // JSON parse error handler: return 400 when request body is invalid JSON
 app.use((err, req, res, next) => {
@@ -27,5 +28,7 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(3000, () => console.log("Server running"))
+
+// Export the app so it can be consumed by a serverless wrapper (Vercel)
+module.exports = app;

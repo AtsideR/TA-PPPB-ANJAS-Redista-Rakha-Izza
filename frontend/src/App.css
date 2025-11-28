@@ -1,0 +1,100 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Simple nav styles */
+.topnav {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+.topnav a {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #0f172a;
+  background: #eef2ff;
+  font-weight: 600;
+}
+.topnav a.active {
+  background: linear-gradient(90deg,#6366f1,#7c3aed);
+  color: white;
+  box-shadow: 0 8px 20px rgba(99,102,241,0.12);
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  /* offset content so fixed header doesn't overlap */
+  padding-top: calc(var(--header-height, 72px) + 1rem);
+}
+.list {
+  text-align: left;
+  margin: 1rem 0;
+}
+.list-item {
+  padding: 0.95rem;
+  border: 1px solid #eef2ff;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+}
+
+.header-row { display:flex; align-items:center; justify-content:space-between; gap:12px }
+.logo-small { width:44px; height:44px; border-radius:8px; background:linear-gradient(90deg,#6366f1,#7c3aed); display:inline-flex; align-items:center; justify-content:center; color:white; font-weight:700 }
+.page-title { margin: 0.5rem 0 1rem 0 }
+
+/* Responsive nav and lists */
+@media (max-width: 720px) {
+  .topnav { gap: 0.4rem; justify-content: space-between }
+  .topnav a { padding: 0.5rem 0.7rem; font-size: 0.9rem }
+  .container { padding: 0.6rem }
+}
+
+@media (max-width: 520px) {
+  .header-row { flex-direction: column; align-items: flex-start; gap: 8px }
+  .page-grid { grid-template-columns: 1fr }
+  .list-item { padding: 0.75rem }
+}

@@ -1,0 +1,72 @@
+/* --- CSS Dashboard Tambahan --- */
+
+/* Style agar list item terlihat bisa diklik */
+.list-item.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.list-item.clickable:hover {
+    background-color: #f8fafc;
+}
+
+/* Tombol Filter Favorit di Sidebar */
+.btn-fav-filter {
+    width: 100%;
+    background-color: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-fav-filter:hover {
+    background-color: #f5f3ff;
+}
+
+.btn-fav-filter.active {
+    background-color: #ec4899; /* Warna Pink */
+    border-color: #ec4899;
+    color: white;
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3);
+}
+
+/* Tombol Toggle Favorite */
+.btn-filter-toggle {
+  background-color: transparent;
+  color: #6366f1;
+  border: 1px solid #6366f1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 5px;
+}
+
+.btn-filter-toggle:hover {
+  background-color: #eef2ff;
+}
+
+/* Saat aktif (Sedang melihat favorit) */
+.btn-filter-toggle.active {
+  background-color: #ec4899; /* Pink */
+  border-color: #ec4899;
+  color: white;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+}
+
+/* Hover effect pada list item */
+.list-item:hover {
+  background-color: #f8fafc;
+}

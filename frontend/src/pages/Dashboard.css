@@ -1,0 +1,271 @@
+/* --- RESET & GLOBAL FIXES --- */
+/* Ini memastikan tidak ada style bawaan browser yang mengganggu */
+.dashboard-wrapper {
+    width: 100%;
+    max-width: 1400px; /* Batas lebar agar rapi di layar lebar */
+    margin: 0 auto; /* Tengah secara horizontal */
+    padding: 20 px;
+    
+    /* FIX: Agar menempel ke atas dan tidak tertutup Header Fixed */
+    margin-top: 0 !important;
+    padding-top: 0px; /* Sesuaikan dengan tinggi Header Desktop Anda (misal 90px + 10px spasi) */
+    
+    animation: fadeIn 0.5s ease;
+    min-height: 100vh; /* Agar background penuh */
+    box-sizing: border-box;
+}
+
+/* --- HERO SECTION --- */
+.hero-card {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background: linear-gradient(to bottom right, #ffffff, #f8faff);
+    border: 1px solid #eef2ff;
+    /* Tambahan agar text tidak berantakan */
+    overflow: hidden; 
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center; /* Default tengah di mobile */
+}
+
+/* Tampilan Hero Logo & Text Sejajar di PC */
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row;
+        justify-content: center; /* Tetap di tengah agar estetik */
+        text-align: left;
+        gap: 25px;
+    }
+}
+
+.hero-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: white; /* Jaga-jaga jika logo transparan */
+}
+
+.hero-title {
+    margin: 0;
+    font-size: 2.5rem; /* Ukuran font judul */
+    line-height: 1.2;
+    background: -webkit-linear-gradient(45deg, #6366f1, #8b5cf6);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    margin: 5px 0 10px 0;
+    font-weight: 600;
+    color: #4b5563;
+    font-size: 1.1rem;
+}
+
+/* --- GRID SYSTEM (LAYOUT UTAMA) --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default Mobile: 1 Kolom */
+    gap: 24px;
+    align-items: start; /* PENTING: Agar kartu tidak melar ke bawah (stretch) */
+}
+
+/* Tampilan Tablet: 2 Kolom */
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+    .sidebar-card {
+        grid-column: span 2; /* Sidebar memenuhi lebar bawah di tablet */
+    }
+}
+
+/* Tampilan PC/Desktop: 3 Kolom (Anjem | Jastip | Sidebar) */
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1.2fr 1.2fr 0.8fr; /* Proporsi kolom */
+    }
+    .sidebar-card {
+        grid-column: span 1; /* Reset sidebar jadi 1 kolom di kanan */
+        position: sticky;
+        top: 110px; /* Agar sidebar ikut scroll (sesuaikan dengan tinggi header + gap) */
+    }
+}
+
+/* --- MOBILE ADJUSTMENT --- */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        padding-top: 20px; /* Di HP Header Desktop hilang, jadi padding atas dikurangi */
+        padding-bottom: 100px; /* Beri ruang untuk Navigasi Bawah di HP */
+    }
+    
+    .hero-title {
+        font-size: 1.8rem; /* Kecilkan font di HP */
+    }
+}
+
+/* --- CARD ITEMS --- */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f3f4f6;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* --- LIST ITEMS --- */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.list-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #f9fafb;
+    transition: background-color 0.2s;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.tag-location {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap; /* Agar teks lokasi tidak turun baris */
+}
+
+.item-details {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* --- STATS BOX (SIDEBAR) --- */
+.stats-box {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat {
+    flex: 1;
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-num {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #4f46e5;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- UTILITIES --- */
+.badge {
+    font-size: 0.7rem;
+    background: #ecfdf5;
+    color: #059669;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.muted { color: #6b7280; }
+.small-text { font-size: 0.85rem; }
+.mt-4 { margin-top: 16px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- CSS Dashboard Tambahan --- */
+
+/* Style agar list item terlihat bisa diklik */
+.list-item.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.list-item.clickable:hover {
+    background-color: #f8fafc;
+}
+
+/* Tombol Filter Favorit di Sidebar */
+.btn-fav-filter {
+    width: 100%;
+    background-color: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-fav-filter:hover {
+    background-color: #f5f3ff;
+}
+
+.btn-fav-filter.active {
+    background-color: #ec4899; /* Warna Pink */
+    border-color: #ec4899;
+    color: white;
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3);
+}
