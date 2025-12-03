@@ -93,7 +93,6 @@
           </div>
         </div>
         <div className="muted" style={{ marginTop: 8, display: 'flex', gap: 12, alignItems: 'center' }}>
-          <Phone size={14} /> {item.nomor_hp}
           <Clock size={14} /> {new Date(item.created_at).toLocaleString()}
         </div>
       </div>
@@ -186,7 +185,6 @@
                   <div className="modal-body">
                     <div style={{ marginBottom: 8 }}><strong>Lokasi jastip:</strong> {selected.lokasi_jastip}</div>
                     <div style={{ marginBottom: 8 }}><strong>Waktu tunggu:</strong> {selected.waktu_tunggu}</div>
-                    <div style={{ marginBottom: 8 }}><strong>Nomor HP:</strong> {selected.nomor_hp}</div>
                     <div style={{ marginTop: 12 }} className="muted">Dibuat: {new Date(selected.created_at).toLocaleString()}</div>
                   </div>
                 </div>

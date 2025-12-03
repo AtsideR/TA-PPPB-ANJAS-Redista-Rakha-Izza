@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataContext } from '../contexts/DataContext';
-import { MapPin, Phone, Truck, Clock, Heart } from 'lucide-react';
+import { MapPin, Phone, Truck, Clock, Heart, Calendar } from 'lucide-react';
 
 export default function AnjemList() {
   const { anjem: data, loading, error } = useContext(DataContext);
@@ -121,8 +121,13 @@ export default function AnjemList() {
                 </div>
               </div>
               <div className="muted" style={{ marginTop: 8, display: 'flex', gap: 12, alignItems: 'center' }}>
-                <Phone size={14} /> {item.nomor_telepon}
-                <Clock size={14} /> {item.waktu_siap}
+                {/* PERUBAHAN 1: Menyembunyikan nomor telepon di list, diganti label */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                   <Calendar size={14} /> {item.hari_siap  }
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                   <Clock size={14} /> {item.waktu_siap}
+                </div>
               </div>
             </div>
           ))}
@@ -149,6 +154,7 @@ export default function AnjemList() {
                          <Heart size={18} fill={favorites.includes(selected.id) ? "#ef4444" : "none"} />
                       </button>
 
+                      {/* Tombol Chat WA tetap ada (menggunakan data nomor tapi tidak menampilkannya) */}
                       {selected.nomor_telepon && (
                         <a href={`https://wa.me/${toWaNumber(selected.nomor_telepon)}`} target="_blank" rel="noreferrer">
                           <button type="button" style={{ background: '#25D366', color: '#042A1F' }}>Chat WA</button>
@@ -159,7 +165,6 @@ export default function AnjemList() {
                 </div>
                 <div className="modal-body">
                   <div style={{ marginBottom: 8 }}><strong>Lokasi jangkauan:</strong> {selected.lokasi_jangkauan}</div>
-                  <div style={{ marginBottom: 8 }}><strong>Nomor telepon:</strong> {selected.nomor_telepon}</div>
                   <div style={{ marginBottom: 8 }}><strong>Waktu siap:</strong> {selected.waktu_siap}</div>
                   <div style={{ marginBottom: 8 }}><strong>Tipe kendaraan:</strong> {selected.tipe_kendaraan}</div>
                   <div style={{ marginBottom: 8 }}><strong>Hari siap:</strong> {selected.hari_siap}</div>
